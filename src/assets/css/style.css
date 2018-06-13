@@ -1,0 +1,66 @@
+.card {
+    padding: 10px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 2px 0 25px rgba(164, 158, 158, .35);
+    position: relative;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.vux-number-round .vux-number-selector-sub, .vux-number-round .vux-number-selector-plus {
+    padding: 0!important;
+}
+
+.vux-number-selector {
+    height: 22px!important;
+}
+
+.vux-number-round .vux-number-selector {
+    width: 22px!important;
+}
+
+.weui-cells:before, .weui-cell:before, .weui-cells:after {
+    border: 0!important;
+}
+
+.weui-cells {
+    padding: 10px;
+}
+
+.weui-cell {
+    border: 1px solid #e8e8e8;
+    margin-bottom: 15px;
+}
+
+.weui-input, .weui-textarea {
+    text-align: right;
+}
+
+.weui-label, .weui-cell p, .vux-datetime {
+    color: #bfc2c9!important;
+}
+
+.weui-input::-webkit-input-placeholder, .weui-textarea::-webkit-input-placeholder {
+    color: #bfc2c9;
+}
+
+.vux-cell-value {
+    color: #2d2d2d!important;
+}
+
+.vux-number-selector svg {
+    fill: #02c3e2!important;
+}
+
+.vux-number-round .vux-number-selector-sub, .vux-number-round .vux-number-selector-plus {
+    border-color: #02c3e2!important;
+}
+
+.weui-btn_primary {
+    background: #00c160!important;
+    border-radius: 0px!important;
+}
+
