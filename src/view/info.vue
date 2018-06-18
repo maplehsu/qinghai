@@ -1,20 +1,18 @@
 <template>
   <div class="info">
-    <div class="banner">
-      <img src="../assets/images/banner.jpg">
+    <div class="banner"  v-for="item in info">
+      <div v-for="img in item.cover">
+        <img :src="img.url">
+      </div>
       <div class="TuT"></div>
-      <i class="title">青海湖 拉萨布达拉宫9日7晚</i>
+      <i class="title">{{item.title}}</i>
     </div>
-    <div class="content">
+    <div class="content" v-for="item in info">
       <div class="card">
         <div class="t"><i class="play"></i>商家将在2个工作小时内核实是否有位。</div>
-        <div class="c">本产品同样适用于公司单位独立成团，如您的出行人数大于9人，又或者您有特殊的订制需求，那么请将您的详细需求发送到指定邮箱：xxxxxxxxxxx@xxx.com，稍后将有专业的产品旅游规划师亲自为您处理，感谢选择与信赖！</div>
+        <div class="c">{{item.notice}}</div>
       </div>
-      <div class="card mt-15">
-        <p>1.【黄河风情线】是中国有名的城市滨河绿色长廊，融山水、人文胜迹于一体；</p>
-        <p>2.【黄河母亲像】全国诸多表现中华民族母亲河的黄河雕塑艺术品之一，曾在全国首届城市雕塑方案中获奖；</p>
-        <img src="../assets/images/banner.jpg">
-        <p>2.【黄河母亲像】全国诸多表现中华民族母亲河的黄河雕塑艺术品之一，曾在全国首届城市雕塑方案中获奖；</p>
+      <div class="card mt-15" v-html="item.content">
       </div>
     </div>
     <router-link :to="{path: 'reseve'}"> <i class="GO">预定</i></router-link>
@@ -24,13 +22,21 @@
   export default {
     components: {},
     data() {
-      return {};
+      return {
+        info: null
+      }
     },
     mounted() {
       this.init();
     },
     methods: {
-      init: function () {}
+      init: function () {        
+        this.axios.post(this.api.getInfo, {
+          _id: this.$route.params.id
+        }).then( res => {
+          this.info = res.data
+        }) 
+      }
     }
   };
 </script>

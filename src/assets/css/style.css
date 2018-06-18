@@ -10,20 +10,23 @@
     margin-top: 15px;
 }
 
-.vux-number-round .vux-number-selector-sub, .vux-number-round .vux-number-selector-plus {
-    padding: 0!important;
+.vux-number-round .vux-number-selector-sub,
+.vux-number-round .vux-number-selector-plus {
+    padding: 0 !important;
 }
 
 .vux-number-selector {
-    height: 22px!important;
+    height: 22px !important;
 }
 
 .vux-number-round .vux-number-selector {
-    width: 22px!important;
+    width: 22px !important;
 }
 
-.weui-cells:before, .weui-cell:before, .weui-cells:after {
-    border: 0!important;
+.weui-cells:before,
+.weui-cell:before,
+.weui-cells:after {
+    border: 0 !important;
 }
 
 .weui-cells {
@@ -35,32 +38,44 @@
     margin-bottom: 15px;
 }
 
-.weui-input, .weui-textarea {
+.weui-input,
+.weui-textarea {
     text-align: right;
 }
 
-.weui-label, .weui-cell p, .vux-datetime {
-    color: #bfc2c9!important;
+.weui-label,
+.weui-cell p,
+.vux-datetime {
+    color: #bfc2c9 !important;
 }
 
-.weui-input::-webkit-input-placeholder, .weui-textarea::-webkit-input-placeholder {
+.weui-input::-webkit-input-placeholder,
+.weui-textarea::-webkit-input-placeholder {
     color: #bfc2c9;
 }
 
 .vux-cell-value {
-    color: #2d2d2d!important;
+    color: #2d2d2d !important;
 }
 
 .vux-number-selector svg {
-    fill: #02c3e2!important;
+    fill: #02c3e2 !important;
 }
 
-.vux-number-round .vux-number-selector-sub, .vux-number-round .vux-number-selector-plus {
-    border-color: #02c3e2!important;
+.vux-number-round .vux-number-selector-sub,
+.vux-number-round .vux-number-selector-plus {
+    border-color: #02c3e2 !important;
 }
 
 .weui-btn_primary {
-    background: #00c160!important;
-    border-radius: 0px!important;
+    background: #00c160 !important;
+    border-radius: 0px !important;
 }
 
+.info .card img {
+    width: 100%;
+}
+
+.info p span {
+    line-height: 26px;
+}

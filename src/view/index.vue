@@ -1,10 +1,12 @@
 <template>
   <div class="card-box">
       <div class="card" v-for="item in route">
-        <router-link :to="{path: 'info', query:{id: item._id}}">
+        <router-link :to="{name: 'info', params:{id: item._id}}">
           <div class="card-img">
             <div class="title">{{item.title}}</div>
-            <img src="../assets/images/banner.jpg" alt="">
+          　<div v-for="img in item.cover">
+        　　　　<img :src="img.url">
+        　　 </div>
           </div>
           <div class="card-info">
             <div class="footprint">
@@ -24,7 +26,8 @@
     components: {},
     data() {
       return {
-        route: null
+        route: null,
+        url: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect'
       };
     },
     mounted() {
@@ -32,9 +35,12 @@
     },
     methods: {
       init: function () {
-        this.axios.get(this.api.getXianlu).then( res => {
-          this.route = res.data
-        }) 
+        // this.axios.get(this.api.getPath).then( res => {
+        //   this.route = res.data          
+        // }) 
+        this.axios.get(this.url).then (res => {
+          console.log(res)
+        })
       }
     }
   };
@@ -72,6 +78,7 @@
     text-align: center;
     line-height: 20px;
     margin-top: 30px;
+    width: 100%;
   }
 
   .card-info {
