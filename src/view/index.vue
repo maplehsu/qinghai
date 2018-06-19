@@ -1,7 +1,7 @@
 <template>
   <div class="card-box">
       <div class="card" v-for="item in route">
-        <router-link :to="{name: 'info', params:{id: item._id}}">
+        <router-link :to="{path: 'info', query:{id: item._id, userID: userID, userPhoto: userPhoto}}">
           <div class="card-img">
             <div class="title">{{item.title}}</div>
           　<div v-for="img in item.cover">
@@ -10,10 +10,9 @@
           </div>
           <div class="card-info">
             <div class="footprint">
-              <img src="../assets/images/user-photo.jpg">
-              <img src="../assets/images/user-photo.jpg">
-              <img src="../assets/images/user-photo.jpg">
-              <span>67位小伙伴刚刚预定过</span>
+              <img v-for="(item, index) in item.reserve_docs" v-if="index < 3" :src="item.userPhoto">
+              <span v-if="item.reserve_docs.length > 0">{{item.reserve_docs.length}}位小伙伴刚刚预定过</span>
+              <span v-else>热门线路火热预约中...</span>
             </div>
             <i class="price">￥{{item.price}}</i>
           </div>
@@ -27,20 +26,43 @@
     data() {
       return {
         route: null,
-        url: 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect'
+        code: null,
+        userID: null,
+        userList: null,
+        number: null,
+        userPhoto: null
       };
     },
+    created() {
+      if(!this.getQueryString('code')) {
+        window.location.replace(this.api.getOauth)
+      } else {
+        this.code = this.getQueryString('code')
+        this.axios.post(this.api.getToken, {
+          code: this.code
+        }).then( res => {          
+          this.userID = res.data.openid
+          this.userPhoto = res.data.headimgurl
+        }) 
+      }
+    },
     mounted() {
-      this.init();
+      this.init()
     },
     methods: {
       init: function () {
-        // this.axios.get(this.api.getPath).then( res => {
-        //   this.route = res.data          
-        // }) 
-        this.axios.get(this.url).then (res => {
-          console.log(res)
+        this.axios.get(this.api.getPath).then( res => {
+          this.route = res.data                    
         })
+      },
+      getQueryString (name) {
+        let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+        let r = window.location.search.substr(1).match(reg)
+        if (r != null) {
+          return unescape(r[2])
+        } else {
+          return null
+        }
       }
     }
   };

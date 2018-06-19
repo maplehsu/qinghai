@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/view/index'
 import Info from '@/view/info'
-import Reseve from '@/view/reseve'
+import Reserve from '@/view/reserve'
 import Error from '@/view/error'
 
 Vue.use(Router)
@@ -21,9 +21,9 @@ const router = new Router({
       component: Info
     },
     {
-      path: '/reseve',
-      name: 'reseve',
-      component: Reseve
+      path: '/reserve',
+      name: 'reserve',
+      component: Reserve
     },
     {
       path: '/error',
