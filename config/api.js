@@ -3,5 +3,6 @@ export default {
   getInfo: process.env.API_ROOT + '/getInfo',
   getOauth: process.env.API_ROOT + '/getOauth',
   getToken: process.env.API_ROOT + '/getToken',
-  addReserve: process.env.API_ROOT + '/addReserve'
+  addReserve: process.env.API_ROOT + '/addReserve',
+  getUserReserve: process.env.API_ROOT + '/getUserReserve'
 }

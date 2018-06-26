@@ -69,7 +69,9 @@
         userID: null,
         title: '',
         userPhoto: null,
-        disabled: true
+        disabled: true,
+        price: null,
+        routeImg: null
       }
     },
     created() {
@@ -85,7 +87,9 @@
         this.id = this.$route.query.id
         this.userID = this.$route.query.userID
         this.title =  this.$route.query.title
+        this.price = this.$route.query.price
         this.userPhoto =  this.$route.query.userPhoto
+        this.routeImg = this.$route.query.routeImg
       },
       go: function () {
         this.$router.push({path: '/'})
@@ -103,6 +107,8 @@
           title: this.title,
           userID: this.userID,
           userName: this.name,
+          price: this.price,
+          routeImg: this.routeImg,
           phone: this.phone,
           number: this.number,
           startTime: this.today,

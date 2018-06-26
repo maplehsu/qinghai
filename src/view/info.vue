@@ -15,7 +15,7 @@
       <div class="card mt-15" v-html="item.content">
       </div>
     </div>
-    <router-link :to="{path: 'reserve', query:{id: id, userID: userID, title: title, userPhoto: userPhoto}}"> <i class="GO">预定</i></router-link>
+    <router-link :to="{path: 'reserve', query:{id: id, userID: userID, title: title, userPhoto: userPhoto, price: price, routeImg: routeImg}}"> <i class="GO">预定</i></router-link>
   </div>
 </template>
 <script>
@@ -27,7 +27,9 @@
         id: null,
         userID: null,
         title: null,
-        userPhoto: null
+        userPhoto: null,
+        price: null,
+        routeImg: null
       }
     },
     mounted() {
@@ -36,6 +38,7 @@
     methods: {
       init: function () {
         this.id = this.$route.query.id
+        this.price = this.$route.query.price
         this.userID = this.$route.query.userID
         this.userPhoto = this.$route.query.userPhoto
         this.axios.post(this.api.getInfo, {
@@ -43,6 +46,7 @@
         }).then( res => {
           this.info = res.data
           this.title = res.data[0].title
+          this.routeImg = res.data[0].cover[0].url
         }) 
       }
     }
